@@ -1,0 +1,29 @@
+
+sudo dnf install git
+sudo dnf install java-11-openjdk-devel
+sudo dnf info maven
+sudo dnf install maven -y
+mvn --version
+sudo alternatives --config java
+sudo alternatives --config javac
+export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+
+sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
+sudo firewall-cmd --reload
+
+git clone https://github.com/carpetaproyectogithub.git
+
+entrar carpeta
+mvn clean package -DskipTests
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+
+entrar en target
+sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
+sudo firewall-cmd --reload
+
+
+
+
+
+ls: para ver que hay dentro del repositorio
